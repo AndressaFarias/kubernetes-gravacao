@@ -2,10 +2,10 @@ apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
   name: statefulset-mysql
-spec:
+spec: # Devemos expecificar o padrão o objeto ue será abstraído pelo "StatefulSet "
   serviceName: db
   template:
-    metadata:
+    metadata: # Devemos especificar o objeto "POD" que criamos para representar o banco.
       labels:
        name: mysql
     spec:
@@ -23,7 +23,7 @@ spec:
               value: "1"
           volumeMounts:
             - name: volume-mysql
-              mountPath: /var/lib/mysql
+              mountPath: /var/lib/mysql # local onde no bando de dados as informações ficam armzenadas
       volumes:
        - name: volume-mysql
          persistentVolumeClaim:

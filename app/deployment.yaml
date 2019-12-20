@@ -3,13 +3,17 @@ kind: Deployment
 metadata:
   name: aplicacao-deployment
 spec:
+  selector:
+    matchLabels:
+      name: aplicacao-pod
+# definição do objeto a ser abstraido pelo Deployment
   template:
     metadata:
       labels:
-       name: aplicacao-pod
+        name: aplicacao-pod
     spec:
       containers:
-        - name: container-aplicacao-loja
-          image: rafanercessian/aplicacao-loja:v1
-          ports:
-            - containerPort: 80
+      - name: container-aplicacao-loja
+        image: rafanercessian/aplicacao-loja:v1
+        ports:
+        - containerPort: 80

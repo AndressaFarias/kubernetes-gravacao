@@ -1,10 +1,19 @@
+# Esse arquivo tem o intuito de criar o objeto Pod que irá abstrair os containers da nossa plicação.
+
+# versão da API do Kubernetes responsável pela esquematização do objeto que desejamos criar:
 apiVersion: v1
+
+# Tipo de objeto que nós queremos criar:
 kind: Pod
+
 metadata:
-  name: aplicacao
+  name: aplicacao # como  o K8S  pode estar gerenciando v´rios Pods, vamos colocar um nome para identificção do objeto 
+
+# Devemos especificar o que teremos dentro desse objeto Pod que estamos criando, devemos descrever as características do container de nossa aplicação web.
 spec:
   containers:
-    - name: container-aplicacao-loja
+    - name: container-app-loja
       image: rafanercessian/aplicacao-loja:v1
       ports:
         - containerPort: 80
+        

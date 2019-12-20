@@ -1,13 +1,17 @@
+# Esse arquivo faza configuração do objeto Pod que irá abstrair o container com o banco de dados MYSQL;
+# 
 apiVersion: v1
 kind: Pod
 metadata:
   name: mysql
 spec:
   containers:
-    - name: container-mysql
-      image: mysql:5.7.19
+    - name: container-myql
+      image: mysql
       ports:
         - containerPort: 3306
+      # Nossa aplicaão eb irá se comunicar com o banco de dados
+      # e a comunicão será feita com um banco "loja", através du uuário "root" e senha vazia
       env:
         - name: MYSQL_DATABASE
           value: "loja"
@@ -15,3 +19,5 @@ spec:
           value: "root"
         - name: MYSQL_ALLOW_EMPTY_PASSWORD
           value: "1"
+
+

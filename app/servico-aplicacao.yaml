@@ -1,10 +1,17 @@
 apiVersion: v1
 kind: Service
-metadata:
-  name: servico-aplicacao
+metadata: 
+  name: service-aplicacao
+# Esse objeto Service será configurado para balancear os acesos dos usuários
+#  para os Pods que formam a aplicação;
+
 spec:
   type: LoadBalancer
-  ports:
+  ports: 
     - port: 80
+
+# Devems configurar quais serão os Pods que devem ser abstrídos por ese objeto.
   selector:
-    name: aplicacao-pod
+    name: aplicacao-pod # deve ser o mesmo nome configurado no arquivo de deployment como sendo o nome o pod
+                        # Com essa confguração  estamo diendo que todo os Pos com o nme "apicacao-pod"
+                        # serão abstraído por sse objeto Service

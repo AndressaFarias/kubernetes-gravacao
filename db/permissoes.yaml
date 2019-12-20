@@ -1,10 +1,22 @@
+# Uma vez que criamos o volume chamado "volume-mysql",
+# temos que configurar a quantidade de recursos que nosso Pod com o banco de dados 
+# terá permissão de consumir
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: configuracao-mysql
+# Devemos especiicar como será o tipode acesso
+# bem como a capacidade de armazenamento que iremos requisitar para nossa aplicação
+
+# Vamos configurar o modo de acesso como seno de leitura e escrita somente para a máquina que receber o Pod com o banco de dados
+# será solicitadaa uma capacidade de armazenamento de 3Gi.
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 3Gi
+
+# Devemos informar que essas configurações devem ser utilizadas pelo Pod com o banco de dados para acesar o volume chamado "volume-mysql"
+# Essa informação deverá ser declarada no arquivo "statefulet"
